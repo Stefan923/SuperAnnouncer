@@ -6,7 +6,7 @@
 
     <groupId>me.Stefan923</groupId>
     <artifactId>SuperAnnouncer</artifactId>
-    <version>2.4.0</version>
+    <version>3.0.1</version>
 
     <repositories>
         <repository>
