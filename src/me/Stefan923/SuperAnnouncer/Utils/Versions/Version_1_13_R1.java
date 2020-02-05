@@ -1,19 +1,19 @@
-package me.Stefan923.SuperAnnouncer.Utils.Version;
+package me.Stefan923.SuperAnnouncer.Utils.Versions;
 
-import org.bukkit.craftbukkit.v1_9_R2.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_13_R1.entity.CraftPlayer;
 import org.bukkit.entity.*;
 import org.bukkit.*;
-import net.minecraft.server.v1_9_R2.*;
+import net.minecraft.server.v1_13_R1.*;
 
 import java.util.List;
 
-public class Version_1_9_R2 extends Version {
+public class Version_1_13_R1 extends Version {
 
     @Override
     public void send(final Player player, final String json) {
         try {
             final IChatBaseComponent iChatBaseComponent = IChatBaseComponent.ChatSerializer.a(ChatColor.translateAlternateColorCodes('&', json));
-            final PacketPlayOutChat chat = new PacketPlayOutChat(iChatBaseComponent, (byte)0);
+            final PacketPlayOutChat chat = new PacketPlayOutChat(iChatBaseComponent, ChatMessageType.CHAT);
             ((CraftPlayer)player).getHandle().playerConnection.sendPacket(chat);
         } catch (Exception e) {
             System.out.println("[SuperAnnouncer] There was an error sending the following message to: " + (player != null ? player.getName() : "unknown player"));
@@ -35,10 +35,12 @@ public class Version_1_9_R2 extends Version {
                     if (line.equals(first)) {
                         continue;
                     }
-                    iChatBaseComponent.addSibling(IChatBaseComponent.ChatSerializer.a(ChatColor.translateAlternateColorCodes('&', line)));
+                    if (iChatBaseComponent != null) {
+                        iChatBaseComponent.addSibling(IChatBaseComponent.ChatSerializer.a(ChatColor.translateAlternateColorCodes('&', line)));
+                    }
                 }
             }
-            final PacketPlayOutChat chat = new PacketPlayOutChat(iChatBaseComponent, (byte)0);
+            final PacketPlayOutChat chat = new PacketPlayOutChat(iChatBaseComponent, ChatMessageType.CHAT);
             ((CraftPlayer)player).getHandle().playerConnection.sendPacket(chat);
         } catch (Exception e) {
             System.out.println("[SuperAnnouncer] There was an error sending the following message to: " + (player != null ? player.getName() : "unknown player"));

@@ -1,4 +1,4 @@
-package me.Stefan923.SuperAnnouncer.Utils.Version;
+package me.Stefan923.SuperAnnouncer.Utils.Versions;
 
 import org.bukkit.Bukkit;
 
@@ -36,7 +36,6 @@ public interface VersionUtils {
     }
 
     default String getServerVersion() {
-        String version;
         try {
             return Bukkit.getServer().getClass().getPackage().getName().replace(".", ",").split(",")[3];
         } catch (ArrayIndexOutOfBoundsException ex) {

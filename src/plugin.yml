@@ -1,70 +1,16 @@
 name: SuperAnnouncer
-version: 2.4.0
-main: me.Stefan923.SuperAnnouncer.Main
+version: 3.0.0
+main: me.Stefan923.SuperAnnouncer.SuperAnnouncer
 description: Announce your news and tips.
-softdepend: [PlaceholderAPI]
+softdepend: [PlaceholderAPI, SuperCore]
 authors: [Stefan923]
 
 commands:
-  core:
+  superannouncer:
     description: Infos about this plugin.
-    aliases: [corelite, supercore, supercorelite, score, scorelite]
-  adminchat:
-    description: Special chat for admins.
-    aliases: [superadminchat, sadminchat, achat, superachat, sachat, ac, superac, sac]
-  broadcast:
-    description: Sends a message to all online players.
-    aliases: [superbroadcast, sbroadcast, bc, superbc, sbc]
-  donorchat:
-    description: Special chat for donors.
-    aliases: [superdonorchat, sdonorchat, dchat, superdchat, sdchat, dc, superdc, sdc]
-  helpop:
-    description: Special chat to request help.
-    aliases: [superhelpop, shelpop, superreport, sreport, report]
-  language:
-    description: Shows list of online players.
-    aliases: [superlanguage, slanguage, lang, superlang, slang]
-  list:
-    description: Shows list of online players.
-    aliases: [superlist, slist, who, superwho, swho]
-  nick:
-    description: Change your name.
-    aliases: [supernick, snick, nickname, supernickname, snickname]
+    aliases: [announcer, sannouncer]
 
 permissions:
-  supercore.admin:
+  superannouncer.admin:
     description: Acces to powerfull commands, like /core reload.
-    default: op
-  supercore.adminchat.send:
-    description: Use adminchat command.
-    default: op
-  supercore.adminchat.receive:
-    description: Receive messages on adminchat.
-    default: op
-  supercore.donorchat.send:
-    description: Use donorchat command.
-    default: op
-  supercore.donorchat.receive:
-    description: Receive messages on donorchat.
-    default: op
-  supercore.helpop.send:
-    description: Use helpop command.
-    default: op
-  supercore.helpop.receive:
-    description: Receive messages on helpop.
-    default: op
-  supercore.language:
-    description: Change your language.
-    default: op
-  supercore.list:
-    description: Use list command.
-    default: op
-  supercore.list.default:
-    description: Appear on online list as default player.
-    default: true
-  supercore.nick:
-    description: Use nick command.
-    default: op
-  supercore.nick.format:
-    description: Use formatting codes in nickname.
     default: op

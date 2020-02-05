@@ -1,13 +1,13 @@
-package me.Stefan923.SuperAnnouncer.Utils.Version;
+package me.Stefan923.SuperAnnouncer.Utils.Versions;
 
-import org.bukkit.craftbukkit.v1_10_R1.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_11_R1.entity.CraftPlayer;
 import org.bukkit.entity.*;
 import org.bukkit.*;
-import net.minecraft.server.v1_10_R1.*;
+import net.minecraft.server.v1_11_R1.*;
 
 import java.util.List;
 
-public class Version_1_10_R1 extends Version {
+public class Version_1_11_R1 extends Version {
 
     @Override
     public void send(final Player player, final String json) {

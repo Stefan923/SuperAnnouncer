@@ -1,9 +1,14 @@
 package me.Stefan923.SuperAnnouncer.Utils;
 
+import me.Stefan923.SuperAnnouncer.SuperAnnouncer;
+import me.Stefan923.SuperCore.API.SuperCoreAPI;
+import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+
+import java.util.List;
 
 public interface MessageUtils {
 
@@ -59,6 +64,34 @@ public interface MessageUtils {
 
     default void sendLogger(final String string) {
         Bukkit.getConsoleSender().sendMessage(formatAll(string));
+    }
+
+    default String prepareMessageByLang(Player player, String option) {
+        SuperAnnouncer instance = SuperAnnouncer.getInstance();
+        if (Bukkit.getPluginManager().getPlugin("SuperCore") != null) {
+            String language = SuperCoreAPI.getInstance().getUser(player.getName()).getLanguage();
+            if (instance.getLanguageManagers().containsKey(language))
+                return prepareMessage(player, instance.getLanguageManager(language).getConfig().getString(option));
+        }
+        return prepareMessage(player, instance.getLanguageManager(instance.getSettingsManager().getConfig().getString("Languages.Default Language")).getConfig().getString(option));
+    }
+
+    default String prepareMessageListByLang(Player player, String option) {
+        SuperAnnouncer instance = SuperAnnouncer.getInstance();
+        if (Bukkit.getPluginManager().getPlugin("SuperCore") != null) {
+            String language = SuperCoreAPI.getInstance().getUser(player.getName()).getLanguage();
+            if (instance.getLanguageManagers().containsKey(language))
+                return prepareMessage(player, instance.getLanguageManager(language).getConfig().getStringList(option));
+        }
+        return prepareMessage(player, instance.getLanguageManager(instance.getSettingsManager().getConfig().getString("Languages.Default Language")).getConfig().getStringList(option));
+    }
+
+    default String prepareMessage(Player player, String message) {
+        return formatAll(replacePlaceholders(player, message));
+    }
+
+    default String prepareMessage(Player player, List<String> messages) {
+        return formatAll(replacePlaceholders(player, String.join("\n", messages)));
     }
 
     default void sendCenteredMessage(Player player, String message) {
@@ -130,6 +163,10 @@ public interface MessageUtils {
             compensated += spaceLength;
         }
         player.sendMessage(sb.toString() + message);
+    }
+
+    default String replacePlaceholders(Player player, String string) {
+        return Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null ? PlaceholderAPI.setPlaceholders(player, string) : string;
     }
 
 }
