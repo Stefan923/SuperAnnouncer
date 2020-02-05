@@ -2,10 +2,12 @@ package me.Stefan923.SuperAnnouncer;
 
 import me.Stefan923.SuperAnnouncer.Commands.CommandManager;
 import me.Stefan923.SuperAnnouncer.Language.LanguageManager;
+import me.Stefan923.SuperAnnouncer.Listeners.PlayerJoinListener;
 import me.Stefan923.SuperAnnouncer.Settings.SettingsManager;
 import me.Stefan923.SuperAnnouncer.Tasks.AnnouncerTaskDependent;
 import me.Stefan923.SuperAnnouncer.Tasks.AnnouncerTaskIndependent;
 import me.Stefan923.SuperAnnouncer.Utils.MessageUtils;
+import me.Stefan923.SuperAnnouncer.Utils.Versions.VersionUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.PluginManager;
@@ -16,7 +18,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class SuperAnnouncer extends JavaPlugin implements MessageUtils {
+public class SuperAnnouncer extends JavaPlugin implements MessageUtils, VersionUtils {
 
     private static SuperAnnouncer instance;
 
@@ -51,6 +53,11 @@ public class SuperAnnouncer extends JavaPlugin implements MessageUtils {
         if (Bukkit.getPluginManager().getPlugin("SuperCore") != null)
             startAnnouncementsDependent();
         else startAnnouncementsIndependent();
+
+        if (settingsManager.getConfig().getBoolean("Update Checker.Enable.On Plugin Enable"))
+            Bukkit.getScheduler().runTaskAsynchronously(this, () -> {
+                checkForUpdate(this, this);
+            });
     }
 
     public static SuperAnnouncer getInstance() {
@@ -60,6 +67,9 @@ public class SuperAnnouncer extends JavaPlugin implements MessageUtils {
     private Integer enableListeners() {
         Integer i = 0;
         PluginManager pluginManager = getServer().getPluginManager();
+        if (settingsManager.getConfig().getBoolean("Update Checker.Enable.On Join")) {
+            pluginManager.registerEvents(new PlayerJoinListener(), this);
+        }
         return i;
     }
 

@@ -41,31 +41,10 @@ public class SettingsManager {
     public void resetConfig() {
         config.set("Languages.Default Language", "lang_en.yml");
         config.set("Languages.Available Languages", Arrays.asList("lang_en.yml"));
-        config.set("Enabled Commands.AdminChat", true);
-        config.set("Enabled Commands.Broadcast", true);
-        config.set("Enabled Commands.DonorChat", true);
-        config.set("Enabled Commands.Fly", true);
-        config.set("Enabled Commands.Gamemode", true);
-        config.set("Enabled Commands.God", true);
-        config.set("Enabled Commands.HelpOp", true);
-        config.set("Enabled Commands.Language", true);
-        config.set("Enabled Commands.List", true);
-        config.set("Enabled Commands.Nick", true);
-        config.set("Enabled Commands.WhoIs", true);
-        config.set("Command Cooldowns.AdminChat", 5);
-        config.set("Command Cooldowns.DonorChat", 10);
-        config.set("Command Cooldowns.HelpOp", 10);
-        config.set("Command Cooldowns.Nick", 60);
-        config.set("Command.List.Group Permissions", Arrays.asList("supercore.list.default", "supercore.list.admin", "supercore.list.donor"));
-        config.set("Nick.Maximum Length", 16);
-        config.set("On Join.Enable Join Message", true);
-        config.set("On Quit.Enable Quit Message", true);
-        config.set("Storage.MySQL.Enable", false);
-        config.set("Storage.MySQL.IP Adress", "127.0.0.1");
-        config.set("Storage.MySQL.Port", 3306);
-        config.set("Storage.MySQL.Database Name", "yourDatabase");
-        config.set("Storage.MySQL.User", "yourUser");
-        config.set("Storage.MySQL.Password", "yourPassword");
+        config.set("Announcer Task.Seconds Between Announcements", 90);
+        config.set("Announcer Task.Disabled Worlds", Arrays.asList("example_world", "example_world2"));
+        config.set("Update Checker.Enable.On Plugin Enable", true);
+        config.set("Update Checker.Enable.On Join", true);
         save();
     }
 
