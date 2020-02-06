@@ -80,16 +80,16 @@ public class CommandManager implements CommandExecutor, MessageUtils {
             return;
         }
         if (command.isNoConsole())
-            sender.sendMessage(formatAll("&8(&3SuperCore&8) &cYou must be a player to use this commands."));
+            sender.sendMessage(formatAll("&8(&3SuperAnnouncer&8) &cYou must be a player to use this commands."));
         if (command.getPermissionNode() == null || sender.hasPermission(command.getPermissionNode())) {
             AbstractCommand.ReturnType returnType = command.runCommand(plugin, sender, strings);
             if (returnType == AbstractCommand.ReturnType.SYNTAX_ERROR) {
-                sender.sendMessage(formatAll("&8(&3SuperCore&8) &cInvalid Syntax!"));
-                sender.sendMessage(formatAll("&8(&3SuperCore&8) &fThe valid syntax is: &b" + command.getSyntax() + "&f."));
+                sender.sendMessage(formatAll("&8(&3SuperAnnouncer&8) &cInvalid Syntax!"));
+                sender.sendMessage(formatAll("&8(&3SuperAnnouncer&8) &fThe valid syntax is: &b" + command.getSyntax() + "&f."));
             }
             return;
         }
-        sender.sendMessage(formatAll("&8(&3SuperCore&8) &cYou have no permission!"));
+        sender.sendMessage(formatAll("&8(&3SuperAnnouncer&8) &cYou have no permission!"));
     }
 
     public List<AbstractCommand> getCommands() {
