@@ -86,7 +86,7 @@ public interface VersionUtils extends MessageUtils {
     }
 
     default String getCurrentPluginVersion() {
-        return Bukkit.getVersion();
+        return Bukkit.getPluginManager().getPlugin("SuperAnnouncer").getDescription().getVersion();
     }
 
 }
