@@ -1,5 +1,5 @@
 name: SuperAnnouncer
-version: 3.0.2
+version: 3.0.3
 main: me.Stefan923.SuperAnnouncer.SuperAnnouncer
 description: Announce your news and tips.
 softdepend: [PlaceholderAPI, SuperCore]
@@ -12,7 +12,7 @@ commands:
 
 permissions:
   superannouncer.admin:
-    description: Acces to powerfull commands, like /core reload.
+    description: Acces to powerfull commands, like /announcer reload.
     default: op
   superannouncer.updatechecker:
     description: Shows a message when an update is available.
