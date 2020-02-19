@@ -43,7 +43,7 @@ public class SuperAnnouncer extends JavaPlugin implements MessageUtils, VersionU
             languageManagers.put(fileName, languageManager);
         }
 
-        Metrics pluginMetrics = new Metrics(this, 6546);
+        Metrics pluginMetrics = new Metrics(this, 6547);
 
         sendLogger("&8&l> &7&m------ &8&l( &3&lSuperAnnouncer &b&lby Stefan923 &8&l) &7&m------ &8&l<");
         sendLogger("&b   Plugin has been initialized.");
