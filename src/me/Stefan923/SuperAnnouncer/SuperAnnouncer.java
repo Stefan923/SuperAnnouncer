@@ -7,6 +7,7 @@ import me.Stefan923.SuperAnnouncer.Settings.SettingsManager;
 import me.Stefan923.SuperAnnouncer.Tasks.AnnouncerTaskDependent;
 import me.Stefan923.SuperAnnouncer.Tasks.AnnouncerTaskIndependent;
 import me.Stefan923.SuperAnnouncer.Utils.MessageUtils;
+import me.Stefan923.SuperAnnouncer.Utils.Metrics;
 import me.Stefan923.SuperAnnouncer.Utils.Versions.VersionUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -41,6 +42,8 @@ public class SuperAnnouncer extends JavaPlugin implements MessageUtils, VersionU
             languageManager.setup(this, fileName);
             languageManagers.put(fileName, languageManager);
         }
+
+        Metrics pluginMetrics = new Metrics(this, 6546);
 
         sendLogger("&8&l> &7&m------ &8&l( &3&lSuperAnnouncer &b&lby Stefan923 &8&l) &7&m------ &8&l<");
         sendLogger("&b   Plugin has been initialized.");
